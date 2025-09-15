@@ -29,7 +29,7 @@ public class CatTest {
 
     @Test
     public void getFoodReturnsPredatorFoodList() throws Exception {
-        when(felineMock.eatMeat()).thenReturn(List.of("Животные", "Птицы"));
-        assertEquals(List.of("Животные", "Птицы"), cat.getFood());
+        when(felineMock.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
 }

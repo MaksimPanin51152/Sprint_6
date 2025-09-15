@@ -20,18 +20,6 @@ public class LionTest {
         felineMock = Mockito.mock(Feline.class);
     }
 
-    @Test
-    public void lionHasManeIfMale() throws Exception {
-        Lion lion = new Lion("Самец", felineMock);
-        assertTrue(lion.doesHaveMane());
-    }
-
-    @Test
-    public void lionHasNoManeIfFemale() throws Exception {
-        Lion lion = new Lion("Самка", felineMock);
-        assertFalse(lion.doesHaveMane());
-    }
-
     @Test(expected = Exception.class)
     public void lionConstructorThrowsIfSexIsInvalid() throws Exception {
         new Lion("Неизвестно", felineMock);
@@ -39,15 +27,15 @@ public class LionTest {
 
     @Test
     public void getKittensDelegatesToFeline() throws Exception {
-        when(felineMock.getKittens()).thenReturn(5);
+        when(felineMock.getKittens()).thenReturn(1);
         Lion lion = new Lion("Самец", felineMock);
-        assertEquals(5, lion.getKittens());
+        assertEquals(1, lion.getKittens());
     }
 
     @Test
     public void getFoodDelegatesToFeline() throws Exception {
-        when(felineMock.getFood("Хищник")).thenReturn(List.of("Мясо"));
+        when(felineMock.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Lion lion = new Lion("Самец", felineMock);
-        assertEquals(List.of("Мясо"), lion.getFood());
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
 }
